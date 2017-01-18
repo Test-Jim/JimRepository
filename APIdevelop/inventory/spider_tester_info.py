@@ -7,8 +7,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium import webdriver
 import time,datetime
 
-testName=['赵星南','张佳慧','叶秀玲','郎昊林','金张爽']
-mobilels=['18268252393','15168372561','18768112317','15868878686','15669036110']
+testName=['']
+mobilels=['']
 worktime,avgtime,txtime,csxlls=[],[],[],[]
 def get_info():
     driver=webdriver.PhantomJS()
