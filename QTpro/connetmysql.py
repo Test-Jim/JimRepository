@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 import MySQLdb,sys
-
+import ConfigParser
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -10,7 +10,16 @@ class Mysql():
     @staticmethod
     def connet():
         #连接数据库
-        conn=MySQLdb.connect(host='192.168.30.28',port=3306,user='root',passwd='admin',db='testjzs',charset="utf8")
+        DB=ConfigParser.ConfigParser()
+        DB.read('DBconfig.ini')
+        host=DB.get('DB','DBhost')
+        port=DB.get('DB','DBport')
+        user=DB.get('DB','DBuser')
+        passwd=DB.get('DB','DBpassword')
+        name=DB.get('DB','DBname')
+        charset=DB.get('DB','DBcharset')
+
+        conn=MySQLdb.connect(host=host,port=int(port),user=user,passwd=passwd,db=name,charset=charset)
         handle=conn.cursor()
         return handle,conn
 

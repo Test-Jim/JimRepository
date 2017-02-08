@@ -54,7 +54,7 @@ class bug_mouth(object):
             if i<int(pagenum)-1:
                 self.driver.find_element_by_css_selector('#bugList > tfoot > tr > td > div.text-right > div > a:nth-child(6) > i').click()
                 self.driver.implicitly_wait(30)
-        recels.remove('yangfengbo')
+        # recels.remove('yangfengbo')
         self.driver.find_element_by_css_selector('#searchmore > i').click()
         self.driver.implicitly_wait(30)
         self.driver.find_element_by_css_selector('#field2 > option:nth-child(6)').click()
