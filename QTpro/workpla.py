@@ -319,7 +319,7 @@ class Ui_MainWindow(object):
 
 
         QtCore.QObject.connect(self.pushButton, QtCore.SIGNAL(_fromUtf8("clicked()")), MainWindow.push_sql)
-        QtCore.QObject.connect(self.push_appendix, QtCore.SIGNAL(_fromUtf8("clicked()")), MainWindow.rush_tester)
+        QtCore.QObject.connect(self.push_appendix, QtCore.SIGNAL(_fromUtf8("clicked()")), MainWindow.open_fujian)
         QtCore.QObject.connect(self.pushButton_5, QtCore.SIGNAL(_fromUtf8("clicked()")),MainWindow.open_plan)
 
         QtCore.QObject.connect(self.menubar, QtCore.SIGNAL(_fromUtf8("triggered(QAction*)")), MainWindow.logout)
@@ -458,9 +458,9 @@ class Ui_MainWindow(object):
             QtGui.QMessageBox.question(self, 'Message',"Commit success!", QtGui.QMessageBox.Yes)
             self.init_data()
 
-    def rush_tester(self):
+    def open_fujian(self):
         self.cc=updownload.Ui_show_updownload()
-        self.cc.show()
+        self.cc.start()
 
 
     def open_plan(self):

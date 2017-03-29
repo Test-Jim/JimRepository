@@ -10,7 +10,7 @@ class Mysql():
     @staticmethod
     def connet():
         #连接数据库
-        conn=MySQLdb.connect(host='192.168.30.28',port=3306,user='root',passwd='admin',db='testjzs',charset="utf8")
+        conn=MySQLdb.connect(host='114.215.30.0',port=3306,user='root',passwd='admin',db='testjzs',charset="utf8")
         handle=conn.cursor()
         return handle,conn
 

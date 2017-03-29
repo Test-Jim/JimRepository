@@ -26,3 +26,4 @@ def readIni(key,value):
     ini.read(inipath)
     end=ini.get(key,value)
     return  end
+

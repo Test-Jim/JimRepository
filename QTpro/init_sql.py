@@ -60,12 +60,43 @@ class sql():
                        "id int not null auto_increment,"
                        "mobile VARCHAR (11),"
                        "worktime VARCHAR (15),"
-                       "avgtime VARCHAR (15,"
+                       "avgtime VARCHAR (15),"
                        "txtime VARCHAR (15),"
-                       "csxl VARCHAR (15,"
+                       "csxl VARCHAR (15),"
                        "primary key(id)"
                        ")"
                        "")
+
+    def create_car_source(self,handle):
+        handle.execute("DROP TABLE IF EXISTS `car_source`")
+        handle.execute("create table car_source("
+                       "id VARCHAR (11),"
+                       "car_title VARCHAR (100),"
+                       "delete_at VARCHAR (20),"
+                       "name VARCHAR (20),"
+                       "company_name VARCHAR (20),"
+                       "mobile VARCHAR (15),"
+                       "type VARCHAR (2) DEFAULT 0,"
+                       "primary key(id)"
+                       ")"
+                       "")
+
+    def create_find_car(self,handle):
+        handle.execute("DROP TABLE IF EXISTS `find_car`")
+        handle.execute("create table find_car("
+                       "fc_no VARCHAR (15),"
+                       "deleted_at VARCHAR (20),"
+                       "car_title VARCHAR (100),"
+                       "name VARCHAR (20),"
+                       "company_name VARCHAR (20),"
+                       "mobile VARCHAR (15),"
+                       "type VARCHAR (2) DEFAULT 0,"
+                       "primary key(fc_no)"
+                       ")"
+                       "")
+
+
+
 if __name__=="__main__":
     handle,conn=connetmysql.Mysql.connet()
     connect=sql()
@@ -74,7 +105,8 @@ if __name__=="__main__":
 
     # connect.create_plan(handle)
     # connect.create_number(handle)
-    connect.create_info(handle)
+    # connect.create_info(handle)
     # connect.create_user(handle)
-
+    connect.create_car_source(handle)
+    connect.create_find_car(handle)
     connetmysql.Mysql.close(handle,conn)

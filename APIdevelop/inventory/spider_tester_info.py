@@ -7,9 +7,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium import webdriver
 import time,datetime
 
-testName=['']
-mobilels=['']
-worktime,avgtime,txtime,csxlls=[],[],[],[]
+testName=['赵星南','张佳慧','叶秀玲','郎昊林','金张爽']
+mobilels=['18268252393','15168372561','18768112317','15868878686','15669036110']
+worktime,avgtime,txtime,csxlls=[],[],[],['0.00%']
 def get_info():
     driver=webdriver.PhantomJS()
     driver.get('http://project.kuaiqiangche.cc/index.php?m=user&f=login&referer=L2luZGV4LnBocD8=')
@@ -51,9 +51,10 @@ def get_info():
     for tester in soup.find_all(class_='a-center'):
         for data in tester.find_all('td')[10:11]:
             csxlls.append(data.get_text())
-
+    csxlls.append('0.00%')
 
     handle,conn=connetmysql.Mysql.connet()
+    print worktime,avgtime,txtime,csxlls,mobilels
     connetmysql.Mysql.insert_testerwork(handle,worktime,avgtime,txtime,csxlls,mobilels)
     connetmysql.Mysql.close(handle,conn)
 

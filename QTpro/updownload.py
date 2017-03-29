@@ -25,7 +25,8 @@ except AttributeError:
         return QtGui.QApplication.translate(context, text, disambig)
 
 class Ui_Form(object):
-    def setupUi(self, Form):
+    def run(self, Form):
+
         Form.setObjectName(_fromUtf8("Form"))
         Form.resize(371, 236)
         Form.setWindowIcon(QtGui.QIcon('car.png'))
@@ -108,6 +109,7 @@ class Ui_Form(object):
                 self.localFile = QtCore.QFile(fileName)
                 self.localFile.open(QtCore.QIODevice.ReadWrite)
                 self.ftpClient.get(fileName,self.localFile)
+
             else:
                 QtGui.QMessageBox.question(self, 'Message',"Error filename", QtGui.QMessageBox.Yes)
         else:
@@ -120,9 +122,9 @@ class Ui_Form(object):
         elif (self.ftpClient.currentCommand()==QtNetwork.QFtp.Put):
             print "begin upload"
             self.progressBar.setValue(0)
-        elif(self.ftpClient.currentCommand()==QtNetwork.QFtp.Close):
-            print "ftp closed"
-            self.ftpClient.close()
+        # elif(self.ftpClient.currentCommand()==QtNetwork.QFtp.Close):
+        #     print "ftp closed"
+        #     self.ftpClient.close()
 
     def updateDataTransferProgress(self,readByte,totalByte):
         if totalByte >= 4096:
@@ -134,5 +136,5 @@ class Ui_Form(object):
 class Ui_show_updownload(QtGui.QWidget,Ui_Form):
     def __init__(self):
         QtGui.QWidget.__init__(self)
-        self.setupUi(self)
+        self.run(self)
 
